@@ -1,0 +1,6 @@
+flask
+PyPDF2
+reportlab
+newspaper
+spacy 
+re
