@@ -5,12 +5,12 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from newspaper import Article
 import spacy
-import re
+import regex  # Use 'regex' instead of 're'
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 # Load the spaCy model with 'sentencizer'
-nlp = spacy.load("en_core_web_sm", exclude=['parser', 'ner'])
+nlp = spacy.load("en_core_web_lg", exclude=['parser', 'ner'])
 sentencizer = nlp.add_pipe("sentencizer")
 
 def scrape_text_from_url(url):
@@ -56,7 +56,7 @@ def create_pdf(summary):
 
     # Split the summary into paragraphs for better formatting
     summary_paragraphs = summary.split('\n')
-    paragraphs += [Paragraph(paragraph, styles['BodyText'],encoding='utf-8') for paragraph in summary_paragraphs]
+    paragraphs += [Paragraph(paragraph, styles['BodyText'], encoding='utf-8') for paragraph in summary_paragraphs]
 
     # Build the PDF document
     doc.build(paragraphs)
@@ -85,7 +85,7 @@ def index():
 
         sentences = preprocess_text(text)
         summary = extractive_summarization(sentences)
-        cleaned_summary = re.sub(r'\[\d+\]', '', summary)
+        cleaned_summary = regex.sub(r'\[\d+\]', '', summary)  # Use 'regex' instead of 're'
 
         # Create a PDF file with the summarized text using ReportLab
         pdf_filename = create_pdf(cleaned_summary)
@@ -103,5 +103,5 @@ def index():
 def download_pdf(filename):
     return send_file(filename, as_attachment=True)
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     app.run(debug=True)
