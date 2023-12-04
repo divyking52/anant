@@ -7,7 +7,7 @@ from newspaper import Article
 import spacy
 import regex  # Use 'regex' instead of 're'
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Load the spaCy model with 'sentencizer'
 nlp = spacy.load("en_core_web_lg", exclude=['parser', 'ner'])
