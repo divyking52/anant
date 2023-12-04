@@ -103,5 +103,4 @@ def index():
 def download_pdf(filename):
     return send_file(filename, as_attachment=True)
 
-if _name_ == "_main_":
-    app.run(debug=True)
+
