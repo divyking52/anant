@@ -3,5 +3,5 @@ PyPDF2
 reportlab
 newspaper3k
 spacy 
-re
+regex
 gunicorn
