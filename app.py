@@ -10,7 +10,7 @@ import regex  # Use 'regex' instead of 're'
 app = Flask(__name__)
 
 # Load the spaCy model with 'sentencizer'
-nlp = spacy.load("en_core_web_lg", exclude=['parser', 'ner'])
+nlp = spacy.load("en_core_web_md", exclude=['parser', 'ner'])
 sentencizer = nlp.add_pipe("sentencizer")
 
 def scrape_text_from_url(url):
